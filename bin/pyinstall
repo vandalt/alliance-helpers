@@ -46,7 +46,7 @@ install_wheels() {
   fi
 
   if [ -s "$MISSING_FILE" ]; then
-    pip install "$LOCAL_WHEELS_DIR"/*
+    pip install --no-index "$LOCAL_WHEELS_DIR"/*
   fi
 }
 
