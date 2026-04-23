@@ -42,10 +42,12 @@ download_missing_wheels() {
 install_wheels() {
   check_requirements_files
   if [ -s "$AVAIL_FILE" ]; then
+    echo "Installing available wheels from $AVAIL_FILE"
     pip install --no-index -r "$AVAIL_FILE"
   fi
 
   if [ -s "$MISSING_FILE" ]; then
+    echo "Installing local wheels"
     pip install --no-index "$LOCAL_WHEELS_DIR"/*
   fi
 }
