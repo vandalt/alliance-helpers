@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-ALLIANCE_SUBDIR=".alliance"
+ALLIANCE_SUBDIR="alliance"
 MISSING_FILE="$ALLIANCE_SUBDIR/missing_wheels.txt"
 AVAIL_FILE="$ALLIANCE_SUBDIR/available_wheels.txt"
 REQ_FILE="$ALLIANCE_SUBDIR/requirements.txt"
