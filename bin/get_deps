@@ -25,6 +25,11 @@ parser.add_argument(
     action="store_true",
     help="Force overwrite if output file already exists",
 )
+parser.add_argument(
+    "--optional",
+    action="store_true",
+    help="Include optional dependencies from [project.optional-dependencies]",
+)
 args = parser.parse_args()
 
 pyproject_path = Path(args.pyproject)
@@ -36,6 +41,11 @@ with open(pyproject_path, "rb") as f:
     data = tomllib.load(f)
 
 deps = data.get("project", {}).get("dependencies", [])
+
+if args.optional:
+    optional_deps = data.get("project", {}).get("optional-dependencies", {})
+    for dep_list in optional_deps.values():
+        deps.extend(dep_list)
 
 output_path = Path(args.output)
 if output_path.exists() and not args.force:
