@@ -15,7 +15,7 @@ generate_requirements_files() {
     if [ "$OPTIONAL" = true ]; then
       get_deps_args="$get_deps_args --optional"
     fi
-    get_deps "$get_deps_args"
+    get_deps $get_deps_args
   fi
 
   if [ ! -s "$REQ_FILE" ]; then
